@@ -1,0 +1,64 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-2 col-3 offset-xs-2 align-self-center">
+            <h1 style="display: inline;">Golazo</h1>
+            <br>
+            <br>
+            <button *ngIf="!fixtureMode" class="btn btn-sm btn-info" (click)="fixtureMode = true">Show All Fixtures</button>
+            <button *ngIf="fixtureMode" class="btn btn-sm btn-info" (click)="fixtureMode = false">Show Table</button>    
+        </div>
+      
+        <div *ngIf="!fixtureMode" style.visibility = "{{fixtureMode ? 'hidden' : 'visible'}}" class="col-md-3 col-xs-8 offset-md-6" style="margin-top: 1em;">
+            <h4 style="display: inline">Today's Fixtures</h4>
+            <hr>
+            <p style="list-style:none; margin-top: .05em; margin-bottom: 0;" *ngFor="let fixture of todaysFixtures">
+                <app-live-fixture [fixture]="fixture"></app-live-fixture>
+            </p>    
+        </div>
+    </div>
+    <div *ngIf="!fixtureMode">
+        <br>
+        <br>
+        <table class="table table-sm" style="text-align: center">
+          
+          <thead>
+            <th scope="col">Player</th>
+            <th scope="col">A</th>
+            <th scope="col">B</th>
+            <th scope="col">C</th>
+            <th scope="col">D</th>
+            <th scope="col">Points</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td style="vertical-align:middle">{{user.name}}</td>
+              <td *ngFor="let team of user.teams"><p>{{team.name}}</p><p>{{team.goals}}</p></td>
+              <td style="vertical-align:middle">{{user.totalPoints}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="row" *ngIf="fixtureMode">
+        
+        <div class="col-12">
+          <h4 class="col-8" style="padding: 1em 0 0 0;">Fixtures</h4>
+          <hr>
+        </div>
+  
+        <div class="col-md-8 col-12" *ngFor="let df of dateFixtures">
+          <h6 style="font-weight: 600;">{{df.date |  date:"EEE d LLLL"}}</h6>
+          <div *ngFor="let fixture of df.fifaFixtures" class="row">
+            <p class="col-md-2 col-3">{{fixture.Date | date:"h:mma"}}</p>
+            <p class="col-md-2 col-3">{{fixture.HomeTeamName}}</p>
+            <span class="col-md-2 col-2" *ngIf="fixture.MatchStatus == 1"> v </span>
+            <span class="col-md-2 col-2" *ngIf="fixture.MatchStatus == 0" >{{fixture.GoalsHomeTeam}}:{{fixture.GoalsAwayTeam}}</span>          
+            <span class="col-md-2 col-2" *ngIf="fixture.MatchStatus == 3" style="color: rgb(59, 194, 59)">{{fixture.GoalsHomeTeam}}:{{fixture.GoalsAwayTeam}}</span>
+            <p class="col-md-2 col-4">{{fixture.AwayTeamName}}</p>
+          </div>
+          <hr>
+        </div>
+      </div>
+  
+  </div>
