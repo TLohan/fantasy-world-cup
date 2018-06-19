@@ -1,0 +1,32 @@
+
+
+@media (min-width: 768px) { 
+    .future-fixture {
+        .homeTeam {
+            text-align: right;
+        }
+        .score {
+            text-align: right;
+        }
+    }
+ }
+
+@media (min-width: 992px) { 
+    .future-fixture {
+        .kickoff {
+            font-size: .8em;
+        }
+        .homeTeam {
+            text-align: center;
+            
+        }
+        .score {
+            text-align: center;
+        }
+        .awayTeam {
+            text-align: center;
+        }
+    }
+}
+
+

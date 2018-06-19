@@ -7,6 +7,10 @@ export class Team {
     goals = 0;
     crestUrl: string;
     private _points = 0;
+    groupWins: number;
+    groupLosses: number;
+    groupDraws: number;
+    goalAgainst: number;
 
     constructor(name: string, pot: number) {
         this.name = name;
