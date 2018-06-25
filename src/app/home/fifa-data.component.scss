@@ -1,0 +1,106 @@
+
+
+@media (max-width: 576px) { 
+    .future-fixture {
+        .homeTeam {
+            text-align: center;
+        }
+        .score {
+            text-align: center;
+        }
+        .awayTeam {
+            text-align: center;
+        }
+        .groupName {
+            text-align: center;
+            font-size: .8em;
+            color: darkslategrey;
+        }
+    }
+
+    .live-fixture {
+        .homeTeam {
+            text-align: center;
+        }
+        .score {
+            text-align: center;
+        }
+        .awayTeam {
+            text-align: center;
+        }
+        .groupName {
+            text-align: center;
+            font-size: .8em;
+            color: darkslategrey;
+        }
+    }
+ }
+
+@media (min-width: 576px) { 
+    .future-fixture {
+        border: 1px solid grey;
+        .kickoff {
+            font-size: .8em;
+        }
+        .homeTeam {
+            text-align: center;
+            
+        }
+        .score {
+            text-align: center;
+        }
+        .awayTeam {
+            text-align: center;
+        }
+        .groupName {
+            text-align: center;
+            font-size: .8em;
+            color: darkslategrey;
+        }
+    }
+
+    .live-fixture {
+
+
+        .kickoff {
+            font-size: .8em;
+        }
+        .homeTeam {
+            text-align: center;
+            
+        }
+        .score {
+            text-align: center;
+        }
+        .awayTeam {
+            text-align: center;
+        }
+        .groupName {
+            text-align: center;
+            font-size: .8em;
+            color: darkslategrey;
+        }
+    }
+}
+
+
+.live-fixture {
+    color: rgb(91, 231, 91);
+}
+
+.past-fixture {
+    .homeTeam {
+        text-align: center;
+    }
+    .score {
+        text-align: center;
+    }
+    .awayTeam {
+        text-align: center;
+    }
+    .groupName {
+        text-align: center;
+        font-size: .8em;
+        color: darkslategrey;
+    }
+}
