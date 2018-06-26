@@ -1,28 +1,43 @@
 <div class="row past-fixture" *ngIf="fixture.MatchStatus == 0" > <!--Past Fixture-->    
-    <span class="col-md-5 col-4 xs-offset-2" style = "text-align: right;">{{fixture.HomeTeamName}}</span>
-    <span class="col-2" style= "text-align: center">{{fixture.GoalsHomeTeam}}:{{fixture.GoalsAwayTeam}}</span>
-    <span class="col-md-5 col-4">{{fixture.AwayTeamName}}</span>          
+    <span class="col-4 offset-2 homeTeam" style = "text-align: right;">{{fixture.HomeTeamName}}</span>
+    <span class="col-2 score" style= "text-align: center">{{fixture.GoalsHomeTeam}}:{{fixture.GoalsAwayTeam}}</span>
+    <span class="col-4 awayTeam">{{fixture.AwayTeamName}}</span>
+    <span class="col-10 offset-2 groupName">{{fixture.GroupName}}</span>
 </div>
 
-<div class="row future-fixture" *ngIf="fixture.MatchStatus !== 12"> <!-- Future Fixture -->
-    <span class="col-md-2 col-2 kickoff" *ngIf = "fixture.MatchStatus !== 3"  style.visibility = "{{(fixture.MatchStatus != 1)? 'hidden' : 'visible'}}">{{fixture.Date | date:"h:mm a"}}   </span>
-    <span class="col-md-4 col-4 align-middle homeTeam"  style="font-weight: 600;">{{fixture.HomeTeamName}}</span>
-    <span class="col-md-2 col-2 score"  style="font-weight: 600;">v</span>
-    <span class="col-md-4 col-4 awayTeam"  style="font-weight: 600;">{{fixture.AwayTeamName}}</span>
+<div class="row future-fixture" *ngIf="fixture.MatchStatus == 12 || fixture.MatchStatus == 1"> <!-- Future Fixture -->
+    <span class="col-md-2 col-2 kickoff" *ngIf = "fixture.MatchStatus !== 3"  style.visibility = "{{(fixture.MatchStatus == 1 || fixture.MatchStatus == 12) ? 'visible' : 'hidden'}}">{{fixture.Date | date:"h:mm a"}}   </span>
+    <div class="col-md-10 col-10">
+        <div class="row">
+            <span class="col-md-5 col-5 homeTeam"  style="font-weight: 600;">{{fixture.HomeTeamName}}</span>
+            <span class="col-md-2 col-2 score"  style="font-weight: 600;">v</span>
+            <span class="col-md-5 col-5 awayTeam"  style="font-weight: 600;">{{fixture.AwayTeamName}}</span>
+            <span class="col-12 groupName">{{fixture.GroupName}}</span>
+        </div>
+    </div>
 </div>
 
 
-<div class="row live-fixture"> <!-- Live Fixture -->
-    <span class="col-md-3 col-2" *ngIf = "fixture.MatchStatus === 3" style.float="left" style.font-weight="500" >Time: {{fixture.MatchTime}} |</span>
-    <span class="col-md-5 col-10" *ngIf="fixture.MatchStatus == 3" style="color: rgb(59, 194, 59); font-weight: 600; margin-left: 8%">{{fixture.HomeTeamName}} {{fixture.GoalsHomeTeam}}:{{fixture.GoalsAwayTeam}} {{fixture.AwayTeamName}}</span>
-    
+<div class="row live-fixture" *ngIf="fixture.MatchStatus === 3"> <!-- Live Fixture -->
+    <span class="col-md-2 col-2 kickoff" *ngIf = "fixture.MatchStatus === 3" style.float="left" style.font-weight="500" >Time: {{fixture.MatchTime}}</span>
+    <div class="col-md-10 col-10">
+        <div class="row">
+            <span class="col-md-5 col-5 homeTeam"  style="font-weight: 600;">{{fixture.HomeTeamName}}</span>
+            <span class="col-md-2 col-2 score"  style="font-weight: 600;">{{fixture.GoalsHomeTeam}}:{{fixture.GoalsAwayTeam}}</span>
+            <span class="col-md-5 col-5 awayTeam"  style="font-weight: 600;">{{fixture.AwayTeamName}}</span>
+            <span class="col-12 groupName">{{fixture.GroupName}}</span>
+        </div>
+    </div>    
 </div>
 
 <div class="row"> <!-- Goal Data-->
-    <div class="col-md-6 col-5 xs-offset-2" style="padding-right: 2%" >
+    <div class="col-md-5 col-5 offset-2" style="padding-right: 2%" >
         <p style="font-size: .70em; margin: 0px; float: right;" *ngFor="let goal of fixture.HomeGoals">{{goal.Minute}} {{goal.PlayerName}}</p>
     </div>
-    <div class="col-md-6 col-5" style="padding-left: 2%;" >
+    <div *ngIf="fixture.HomeGoals.length > 0" class="col-md-5 col-5" style="padding-left: 2%;" >
+        <p style="font-size: .70em; margin: 0px;" *ngFor="let goal of fixture.AwayGoals">{{goal.Minute}} {{goal.PlayerName}}</p>
+    </div>
+    <div *ngIf="fixture.HomeGoals.length == 0" class="col-md-5 col-5 offset-7" style="padding-left: 2%;" >
         <p style="font-size: .70em; margin: 0px;" *ngFor="let goal of fixture.AwayGoals">{{goal.Minute}} {{goal.PlayerName}}</p>
     </div>    
 </div>
