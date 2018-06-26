@@ -4,6 +4,7 @@ export class User {
     name: string;
     teamsNames: string[];
     private _totalPoints: number;
+    private _totalGoals: number;
     teams: Team[] = [];
 
     constructor(name: string, teamsNames: string[]) {
@@ -20,6 +21,14 @@ export class User {
             points += team.points;
         });
         return points;
+    }
+
+    get totalGoals(): number {
+        let count = 0;
+        this.teams.forEach(team => {
+            count += team.goals;
+        });
+        return count;
     }
 
     toString(): string {

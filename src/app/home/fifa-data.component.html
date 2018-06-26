@@ -28,12 +28,14 @@
             <th scope="col">B</th>
             <th scope="col">C</th>
             <th scope="col">D</th>
+            <th scope="col">Goals</th>
             <th scope="col">Points</th>
           </thead>
           <tbody>
             <tr *ngFor="let user of users">
               <td style="vertical-align:middle">{{user.name}}</td>
               <td *ngFor="let team of user.teams"><p>{{team.name}}</p><p>{{team.goals}}</p></td>
+              <td style="vertical-align:middle">{{user.totalGoals}}</td>
               <td style="vertical-align:middle">{{user.totalPoints}}</td>
             </tr>
           </tbody>

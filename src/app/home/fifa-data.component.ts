@@ -86,7 +86,16 @@ function sortByTotalPoints(u1: User, u2: User): number {
     if (u1.totalPoints < u2.totalPoints) {
       return 1;
     } else if (u1.totalPoints === u2.totalPoints) {
-      return 0;
+        if (u1.totalGoals < u2.totalGoals) {
+            return 1;
+        } else if (u1.totalGoals === u2.totalGoals) {
+            for (let index = u1.teams.length - 1; index >= 0; index--) {
+                if (u1.teams[index].goals < u2.teams[index].goals) {
+                    return 1;
+                }
+            }
+        }
+        return 0;
     }
     return -1;
 }

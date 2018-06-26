@@ -16,11 +16,11 @@ export class LiveFixtureComponent implements OnInit {
 
     constructor(private livescoreService: LivescoreService) {
     }
-    
+
     ngOnInit() {
         console.log(this.fixture.AwayTeamName);
         console.log(this.fixture.MatchStatus);
-        
+
         this.livescoreService.getLiveFixtureData(this.fixture).subscribe(data => {
             const homeTeamPlayersData = data.HomeTeam.Players;
             const awayTeamPlayers = data.AwayTeam.Players;
