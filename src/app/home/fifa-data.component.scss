@@ -1,44 +1,18 @@
 
 
-@media (max-width: 576px) { 
+@media (min-width: 768px) { 
     .future-fixture {
         .homeTeam {
-            text-align: center;
+            text-align: right;
         }
         .score {
-            text-align: center;
-        }
-        .awayTeam {
-            text-align: center;
-        }
-        .groupName {
-            text-align: center;
-            font-size: .8em;
-            color: darkslategrey;
-        }
-    }
-
-    .live-fixture {
-        .homeTeam {
-            text-align: center;
-        }
-        .score {
-            text-align: center;
-        }
-        .awayTeam {
-            text-align: center;
-        }
-        .groupName {
-            text-align: center;
-            font-size: .8em;
-            color: darkslategrey;
+            text-align: right;
         }
     }
  }
 
-@media (min-width: 576px) { 
+@media (min-width: 992px) { 
     .future-fixture {
-        border: 1px solid grey;
         .kickoff {
             font-size: .8em;
         }
@@ -51,56 +25,17 @@
         }
         .awayTeam {
             text-align: center;
-        }
-        .groupName {
-            text-align: center;
-            font-size: .8em;
-            color: darkslategrey;
-        }
-    }
-
-    .live-fixture {
-
-
-        .kickoff {
-            font-size: .8em;
-        }
-        .homeTeam {
-            text-align: center;
-            
-        }
-        .score {
-            text-align: center;
-        }
-        .awayTeam {
-            text-align: center;
-        }
-        .groupName {
-            text-align: center;
-            font-size: .8em;
-            color: darkslategrey;
         }
     }
 }
-
 
 .live-fixture {
-    color: rgb(91, 231, 91);
+    color: #47d472;
+    text-align: center;
 }
 
-.past-fixture {
-    .homeTeam {
-        text-align: center;
-    }
-    .score {
-        text-align: center;
-    }
-    .awayTeam {
-        text-align: center;
-    }
-    .groupName {
-        text-align: center;
-        font-size: .8em;
-        color: darkslategrey;
-    }
+.groupName {
+    text-align: center;
+    color: darkslategray;
+    font-size: .8em;
 }

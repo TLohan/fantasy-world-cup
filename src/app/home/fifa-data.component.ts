@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
+import { Fixture } from 'models/fixture.model';
 import { FifaFixture } from 'models/fifa-fixture.model';
+import { _localeFactory } from '@angular/core/src/application_module';
 import { User } from 'models/user.model';
-import { DateFixture } from 'models/date-fixture.model';
+import { DateFixture } from './home.component';
 
 @Component({
     templateUrl: 'fifa-data.component.html',
@@ -10,6 +12,7 @@ import { DateFixture } from 'models/date-fixture.model';
 })
 export class FifaDataComponent implements OnInit {
     users: User[];
+    fixtures: Fixture[] = [];
     dateFixtures: DateFixture[] = [];
     todaysFixtures: FifaFixture[] = [];
 
@@ -31,10 +34,10 @@ export class FifaDataComponent implements OnInit {
     ngOnInit(): void {
         const fixtures: FifaFixture[] = [];
         const dateFixtures: DateFixture[] = [];
+
+
         const dates: string[] = [];
-
         this.usersService.getFifaMatchesData().subscribe(data => {
-
             data.Results.forEach(result => {
                 const fixture = new FifaFixture(result);
                 fixtures.push(fixture);
@@ -83,11 +86,11 @@ function sortByTotalPoints(u1: User, u2: User): number {
     if (u1.totalPoints < u2.totalPoints) {
       return 1;
     } else if (u1.totalPoints === u2.totalPoints) {
-        if (u1.totalGoals < u2.totalGoals){
+        if (u1.totalGoals < u2.totalGoals) {
             return 1;
         } else if (u1.totalGoals === u2.totalGoals) {
             for (let index = u1.teams.length - 1; index >= 0; index--) {
-                if (u1.teams[index].goals < u2.teams[index].goals){
+                if (u1.teams[index].goals < u2.teams[index].goals) {
                     return 1;
                 }
             }

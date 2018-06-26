@@ -3,9 +3,8 @@ import { Http, Response } from '@angular/http';
 import { FifaFixture } from 'models/fifa-fixture.model';
 import { Observable } from 'rxjs/Observable';
 
-
 @Injectable()
-export class LivescoresService {
+export class LivescoreService {
 
     constructor(private http: Http) {}
 

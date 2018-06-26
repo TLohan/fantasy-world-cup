@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FifaFixture } from 'models/fifa-fixture.model';
-import { LivescoresService } from '../services/livescore.service';
+import { LivescoreService } from '../services/livescore.service';
 import { Player } from 'models/player.model';
 import { Goal } from 'models/goal.model';
 
@@ -14,7 +14,8 @@ export class LiveFixtureComponent implements OnInit {
 
     @Input() fixture: FifaFixture = new FifaFixture(null);
 
-    constructor(private livescoreService: LivescoresService) {}
+    constructor(private livescoreService: LivescoreService) {
+    }
 
     ngOnInit() {
         console.log(this.fixture.AwayTeamName);

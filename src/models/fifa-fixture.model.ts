@@ -19,7 +19,6 @@ export class FifaFixture {
 
     HomeGoals: Goal[] = [];
     AwayGoals: Goal[] = [];
-
     constructor(jsonData: any) {
         if (jsonData !== null) {
 
@@ -27,12 +26,13 @@ export class FifaFixture {
             this.IdSeason = jsonData.IdSeason;
             this.IdStage = jsonData.IdStage;
             this.IdMatch = jsonData.IdMatch;
-            this.GroupName = (jsonData.GroupName[0] !== undefined) ? jsonData.GroupName[0].Description : '';
+            this.GroupName = (jsonData.GroupName[0] === undefined) ? '' : jsonData.GroupName[0].Description;
+
             this.Date = new Date(jsonData.Date);
             this.MatchStatus = jsonData.MatchStatus;
             this.MatchTime = jsonData.MatchTime || 0;
 
-            if (jsonData.Home !== null && jsonData.Home !== undefined) {
+            if (jsonData.Home !== null) {
                 this.HomeTeamName = jsonData.Home.TeamName[0].Description;
                 this.GoalsHomeTeam = jsonData.Home.Score;
             } else {
@@ -40,7 +40,7 @@ export class FifaFixture {
                 this.GoalsAwayTeam = 0;
             }
 
-            if (jsonData.Away !== null && jsonData.Away !== undefined) {
+            if (jsonData.Away !== null) {
                 this.AwayTeamName = jsonData.Away.TeamName[0].Description;
                 this.GoalsAwayTeam = jsonData.Away.Score;
             } else {

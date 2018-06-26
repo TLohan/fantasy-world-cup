@@ -13,7 +13,7 @@ export class UsersService {
     }
 
     getUsers(): Observable<any> {
-        const url = 'http://api.football-data.org/v1/competitions/467/fixtures';
+        const url = 'https://api.football-data.org/v1/competitions/467/fixtures';
         const headers = new Headers();
         headers.append('X-Auth-Token', '69f6a2551e984fa0bc21512e79c8e0ed');
         const fixtures: Fixture[] = [];
@@ -24,7 +24,13 @@ export class UsersService {
         });
     }
 
-
+    getFifaMatchesData(): Observable<any> {
+        const url = 'https://api.fifa.com/api/v1/calendar/matches?idseason=254645&idcompetition=17&language=en-GB&count=100';
+        return this.http.get(url).map((response: Response) =>{
+            const result = response.json();
+            return result;
+        });
+    }
 
 
 }
