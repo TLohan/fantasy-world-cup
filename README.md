@@ -3,10 +3,12 @@ This is a website which displays a score board for a World Cup 2018 sweepstakes.
 
 Each player is assigned one team from the four seeded pots. Points are awarded for goals scored as follows:
 
-  Pot A: 1 pts
-  Pot B: 2 pts
-  Pot C: 3 pts
-  Pot D: 4 pts
+|Pot |Points|
+|-----|---|
+|  A | 1 | 
+|  B | 2 |
+|  C | 3 |
+|  D | 4 |
 
 The player with the most points at the end of the competition wins the prizemoney.
 
