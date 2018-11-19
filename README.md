@@ -1,7 +1,16 @@
 # Golazo
 This is a website which displays a score board for a World Cup 2018 sweepstakes.
 
-Each player is assigned one team from the four seeded pots. Points are awarded for goals scored as follows:
+Each player is assigned one team from the four seeded pots. 
+
+|Pot|Teams|
+|---|---|
+|A|Germany, Brazil, Spain, France, England, Argentina, Portugal, Belguim|
+|B|Croatia, Uruguay, Russia, Colombia, Denmark, Switzerland, Mexico, Poland|
+|C|Nigeria, Serbia, Peru, Iceland, Egypt, Morocco, Senegal, Sweden|
+|D|Iran, South Koea, Panama, Costa Rica, Australia, Tunisia, Japan, Saudi Arabia|
+
+Points are awarded for goals scored as follows:
 
 |Pot |Points|
 |-----|---|
@@ -10,7 +19,7 @@ Each player is assigned one team from the four seeded pots. Points are awarded f
 |  C | 3 |
 |  D | 4 |
 
-The player with the most points at the end of the competition wins the prizemoney.
+The player with the most points at the end of the competition wins the prize money.
 
 All goals that count towards the competition's golden boot are counted.
 
