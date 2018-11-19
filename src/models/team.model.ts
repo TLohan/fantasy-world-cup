@@ -21,6 +21,7 @@ export class Team {
         this.goals += amount;
     }
 
+
     get points(): number {
         return this.goals * this.pot;
     }

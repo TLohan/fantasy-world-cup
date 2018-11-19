@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="col-12">
+        <h4 class="col-8" style="padding: 1em 0 0 0;">Fixtures</h4>
+        <hr>
+    </div>
+    
+    <div class="col-12" *ngFor="let df of dateFixtures">
+        <h6 style="font-weight: 600;">{{df.date |  date:"EEE d LLLL"}}</h6>
+        <div *ngFor="let fixture of df.fifaFixtures">
+            <app-live-fixture [fixture]="fixture" [showGoals]="false"></app-live-fixture>
+        </div>
+        <hr>
+    </div>
+</div>

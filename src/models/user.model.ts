@@ -5,6 +5,7 @@ export class User {
     teamsNames: string[];
     private _totalPoints: number;
     private _totalGoals: number;
+    public negative_points = 0;
     teams: Team[] = [];
 
     constructor(name: string, teamsNames: string[]) {

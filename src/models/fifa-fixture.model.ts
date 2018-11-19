@@ -8,7 +8,7 @@ export class FifaFixture {
     IdMatch: number;
     GroupName: string;
     Date: Date;
-    MatchStatus: number;
+    MatchStatus: MatchStatus;
     HomeTeamName: string;
     GoalsHomeTeam: number;
 
@@ -29,7 +29,9 @@ export class FifaFixture {
             this.GroupName = (jsonData.GroupName[0] === undefined) ? '' : jsonData.GroupName[0].Description;
 
             this.Date = new Date(jsonData.Date);
-            this.MatchStatus = jsonData.MatchStatus;
+            this.MatchStatus = this.setMatchStatus(jsonData.MatchStatus);
+            console.log(this.MatchStatus);
+
             this.MatchTime = jsonData.MatchTime || 0;
 
             if (jsonData.Home !== null) {
@@ -49,4 +51,20 @@ export class FifaFixture {
             }
         }
     }
+
+    private setMatchStatus(value: number): MatchStatus {
+        switch (value) {
+            case 1: return MatchStatus.FUTURE;
+            case 0: return MatchStatus.PAST;
+            case 3: return MatchStatus.LIVE;
+            case 12: return MatchStatus.FUTURE;
+            default: return MatchStatus.FUTURE;
+        }
+    }
+}
+
+export enum MatchStatus {
+    LIVE,
+    PAST,
+    FUTURE
 }

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { Fixture } from 'models/fixture.model';
-import { FifaFixture } from 'models/fifa-fixture.model';
-import { _localeFactory } from '@angular/core/src/application_module';
+import { FifaFixture, MatchStatus } from 'models/fifa-fixture.model';
 import { User } from 'models/user.model';
-import { DateFixture } from './home.component';
+import { DateFixture } from 'models/date-fixture.model';
 
 @Component({
     templateUrl: 'fifa-data.component.html',
@@ -53,11 +52,32 @@ export class FifaDataComponent implements OnInit {
 
                     if (user.teamsNames.indexOf(fixture.HomeTeamName) !== -1) {
                         const potNo = user.teamsNames.indexOf(fixture.HomeTeamName);
+                        
+                        let awayPotNo = 0;
+                        
+                        this.users.forEach(u => {
+                            if (u.teamsNames.indexOf(fixture.AwayTeamName) !== -1) {
+                                awayPotNo = 1 + u.teamsNames.indexOf(fixture.AwayTeamName);
+                            }
+                        });
+                        console.log(awayPotNo);
+                        
+                        user.negative_points += (awayPotNo * fixture.GoalsAwayTeam);
                         user.teams[potNo].increaseGoals(fixture.GoalsHomeTeam);
                     }
 
                     if (user.teamsNames.indexOf(fixture.AwayTeamName) !== -1) {
                         const potNo = user.teamsNames.indexOf(fixture.AwayTeamName);
+                        let homePotNo = 0;
+
+                        this.users.forEach(u => {
+                            if (u.teamsNames.indexOf(fixture.HomeTeamName) !== -1) {
+                                homePotNo = 1 + u.teamsNames.indexOf(fixture.HomeTeamName);
+                            }
+                        })
+                        console.log(homePotNo);
+                        
+                        user.negative_points += (homePotNo * fixture.GoalsHomeTeam);
                         user.teams[potNo].increaseGoals(fixture.GoalsAwayTeam);
                     }
 
@@ -81,9 +101,24 @@ export class FifaDataComponent implements OnInit {
         });
     }
 
+    isLiveFixture(status: MatchStatus): boolean {
+        return status === MatchStatus.LIVE;
+    }
+
+    isPastFixture(status: MatchStatus): boolean {
+        return status === MatchStatus.PAST;
+    }
+
+    isFutureFixture(status: MatchStatus): boolean {
+        return status === MatchStatus.FUTURE;
+    }
+
+
 }
 function sortByTotalPoints(u1: User, u2: User): number {
-    if (u1.totalPoints < u2.totalPoints) {
+    const u1tp = u1.totalPoints - u1.negative_points;
+    const u2tp = u2.totalPoints - u2.negative_points;
+    if (u1tp < u2tp) {
       return 1;
     } else if (u1.totalPoints === u2.totalPoints) {
         if (u1.totalGoals < u2.totalGoals) {
