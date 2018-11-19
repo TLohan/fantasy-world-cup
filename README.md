@@ -1,4 +1,18 @@
 # Golazo
+This is a website which displays a score board for a World Cup 2018 sweepstakes.
+
+Each player is assigned one team from the four seeded pots. Points are awarded for goals scored as follows:
+
+  Pot A: 1 pts
+  Pot B: 2 pts
+  Pot C: 3 pts
+  Pot D: 4 pts
+
+The player with the most points at the end of the competition wins the prizemoney.
+
+All goals that count towards the competition's golden boot are counted.
+
+The data is collected from Fifa'a API.
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
 
